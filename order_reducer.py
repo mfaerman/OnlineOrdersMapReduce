@@ -9,12 +9,11 @@ def read_mapper_output(myfile, separator='\t'):
     for line in myfile:
         yield line.rstrip().split(separator,1) 
 
-def find_predecessor(ots, group):
-    for cid, values in group:
-        url, ts, type = values.split(separator)
-        if ts < ots:
-            
-            
+# def find_predecessor(ots, group, separator='\t'):
+#     for cid, values in group:
+#         url, ts, type = values.split(separator)
+#         if ts < ots:
+#             pass
 
 def main(separator='\t'):
     # input comes from STDIN (standard input)
@@ -24,26 +23,19 @@ def main(separator='\t'):
     #   current_word - string containing a word (the key)
     #   group - iterator yielding all ["&lt;current_word&gt;", "&lt;count&gt;"] items
     for current_cid, group in groupby(data, itemgetter(0)):
-        print "---%s---" %current_cid
-        try:
-            for current_cid, values in group:
-                url, ts, type = values.split(separator)
-                print "%s --> %s '(%s)' t = %d" %(current_cid, url, type, int(ts))
-                if type in 'o':
-                    find_predecessor(ts, group)
-                else:
+        print "-------------%s-------------" %current_cid
+        predecessor_ts, predecessor_url = "0",""
+#        try:
+        for current_cid, values in group:
+            ts, url, type = values.split(separator)
+            print "%s --> %s '(%s)' t = %d" %(current_cid, url, type, int(ts))
+            if type in 'o':
+                print "\tORDER Predecessor: URL: %s, Id: %s, Time: %d" %(predecessor_url, current_cid, int(predecessor_ts))
+            predecessor_ts, predecessor_url = ts, url
 
-
-                #if values[3].strip() in 'o':
-                #    print "Order"
-                #else:
-                #    print "Predecessor"
-            #print "%s%s%s%s%s%s%s%d" % (current_cid, group[1:3]) 
-#            total_count = sum(int(count) for current_word, count in group)
-#            print "%s%s%d" % (current_word, separator, total_count)
-        except ValueError:
-            # count was not a number, so silently discard this item
-            pass
+#         except ValueError:
+#             # count was not a number, so silently discard this item
+#             pass
 
 if __name__ == "__main__":
     main()

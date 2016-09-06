@@ -4,6 +4,7 @@
          'customer-Id, URL, Time Stamp' """
 
 PADDING_LENGTH = 8
+INPUT_SEPARATOR = ','
 
 from sys import stdin
 import random
@@ -17,7 +18,7 @@ def is_order(string):
 
 def read_input(myfile):
     for line in myfile:
-        yield line.split(',')
+        yield line.split(INPUT_SEPARATOR)
 
 def main(separator='\t'):
     # input comes from STDIN (standard input)                                                                                                                
