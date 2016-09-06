@@ -23,14 +23,14 @@ def main(separator='\t'):
     #   current_word - string containing a word (the key)
     #   group - iterator yielding all ["&lt;current_word&gt;", "&lt;count&gt;"] items
     for current_cid, group in groupby(data, itemgetter(0)):
-        print "-------------%s-------------" %current_cid
+#        print "-------------%s-------------" %current_cid
         predecessor_ts, predecessor_url = "0",""
 #        try:
         for current_cid, values in group:
             ts, url, type = values.split(separator)
-            print "%s --> %s '(%s)' t = %d" %(current_cid, url, type, int(ts))
+ #           print "%s --> %s '(%s)' t = %d" %(current_cid, url, type, int(ts))
             if type in 'o':
-                print "\tORDER Predecessor: URL: %s, Id: %s, Time: %d" %(predecessor_url, current_cid, int(predecessor_ts))
+                print "%s%s1" %(predecessor_url, separator)
             predecessor_ts, predecessor_url = ts, url
 
 #         except ValueError:
