@@ -8,9 +8,9 @@ import random
 
 def is_order(string):
     if random.random() > 0.5:
-        return 1
+        return True
     else:
-        return 0
+        return False
 
 def read_input(myfile):
     for line in myfile:
@@ -27,13 +27,13 @@ def main(separator='\t'):
     
     # write the results to STDOUT (standard output);                                                                                                     
     # what we output here will be the input for the                                                                                                      
-    # Reduce step, i.e. the input for reducer.py                                                                                                         
-    #                                                                                                                                                    
-    # tab-delimited; the trivial word count is 1                                                                                                         
+
+        output = '%s%s%s%s%s%s' % (cid, separator, ts.zfill(8), separator, url, separator)
+        
         if is_order(url):
-            print '%s%s%s%s%s%so' % (cid, separator, ts.zfill(8), separator, url, separator)
+            print output + 'o'
         else:
-            print '%s%s%s%s%s%su' % (cid, separator, ts.zfill(8), separator, url, separator)
+            print output + 'u'
 
 if __name__ == "__main__":
     main()
