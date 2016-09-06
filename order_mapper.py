@@ -3,11 +3,14 @@
       - Input are files, each containing list of lines with the format -
          'customer-Id, URL, Time Stamp' """
 
+PADDING_LENGTH = 8
+
 from sys import stdin
 import random
 
 def is_order(string):
-    if random.random() > 0.5:
+    header_off = string.split("://",1)[1]
+    if  header_off.find("order", 0) == 0:
         return True
     else:
         return False
@@ -23,12 +26,10 @@ def main(separator='\t'):
     for items in data:
         cid = items[0].strip()
         url = items[1].strip()
-        ts = items[2].strip()
+        ts = items[2].strip().zfill(PADDING_LENGTH)
     
     # write the results to STDOUT (standard output);                                                                                                     
-    # what we output here will be the input for the                                                                                                      
-
-        output = '%s%s%s%s%s%s' % (cid, separator, ts.zfill(8), separator, url, separator)
+        output = '%s%s%s%s%s%s' % (cid, separator, ts, separator, url, separator)
         
         if is_order(url):
             print output + 'o'
@@ -37,4 +38,3 @@ def main(separator='\t'):
 
 if __name__ == "__main__":
     main()
-
