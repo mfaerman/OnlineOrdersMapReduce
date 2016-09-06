@@ -4,6 +4,13 @@
          'customer-Id, URL, Time Stamp' """
 
 from sys import stdin
+import random
+
+def is_order(string):
+    if random.random() > 0.5:
+        return 1
+    else:
+        return 0
 
 def read_input(myfile):
     for line in myfile:
@@ -23,7 +30,10 @@ def main(separator='\t'):
     # Reduce step, i.e. the input for reducer.py                                                                                                         
     #                                                                                                                                                    
     # tab-delimited; the trivial word count is 1                                                                                                         
-        print '%s%s%s%s%s' % (cid, separator, url, separator, ts)
+        if is_order(url):
+            print '%s%s%s%s%s%so' % (cid, separator, ts.zfill(8), separator, url, separator)
+        else:
+            print '%s%s%s%s%s%su' % (cid, separator, ts.zfill(8), separator, url, separator)
 
 if __name__ == "__main__":
     main()
