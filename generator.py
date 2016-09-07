@@ -1,4 +1,6 @@
-#!/usr/bin/env python  
+#!/usr/bin/env python 
+
+## Simulates streams of web page visits and purchase orders 
 
 import random
 
@@ -8,33 +10,32 @@ NON_EVENT_PROBABILITY = 0.2
 ORDER_PROBABILITY = 0.05
 TIME_LIMIT = 100000
 
-separator = ','
-
-customer_ids = range(20)
-
-random.seed(1)
-
-def generate_order(cid, ts):
+def generate_order(cid, ts, separator):
     print "c%d%s https://order?c%d.%d.html%s %d" %(cid, separator, cid, ts, separator, ts)
 
-def generate_url(cid, ts):
+def generate_url(cid, ts, separator):
     web_page = random.randrange(NUM_WEB_PAGES)
     print "c%d%s http://Page%d.html%s %d" %(cid, separator, web_page, separator, ts)
 
-ts = 0
 
-for n in range(TIME_LIMIT):
-    rand = random.random()
-    cid = random.randrange(NUM_CUSTOMERS)
+def main(separator=','):
+
+    customer_ids = range(20)
+
+    random.seed(1)
+
+    for ts in range(TIME_LIMIT):
+        rand = random.random()
+        cid = random.randrange(NUM_CUSTOMERS)
 
 
-    if rand < NON_EVENT_PROBABILITY:
-        # "Do nothing"
-        pass
-    elif rand <= NON_EVENT_PROBABILITY + ORDER_PROBABILITY:
-        generate_order(cid, ts)
-    else:
-        generate_url(cid, ts)
-
-    ts += 1
-    
+        if rand < NON_EVENT_PROBABILITY:
+            # "Do nothing"
+            pass
+        elif rand <= NON_EVENT_PROBABILITY + ORDER_PROBABILITY:
+            generate_order(cid, ts, separator)
+        else:
+            generate_url(cid, ts, separator)
+              
+if __name__ == "__main__":
+    main()
