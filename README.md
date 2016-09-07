@@ -1,7 +1,7 @@
 # OnlineOrdersMapReduce
 ##Map-Reduce analysis for online purchase orders.
 
-Derives which and how frequent web pages are visited immediately before customer issues purchase order
+Derives which and how frequent web pages are visited immediately before customer issues purchase order.
 
 The computation consists of two Map-Reduce phases:
 
