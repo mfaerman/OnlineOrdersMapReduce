@@ -20,10 +20,12 @@ The produced list of urls is fed into a regular WordCount Map-Reducer, such as t
 
 Example hadoop commands (using Hadoop Streaming):
    - Order-Immediate-Predecessor-URL phase: 
+   
          hadoop jar /usr/lib/hadoop-0.20-mapreduce/contrib/streaming/hadoop-streaming-mr1.jar -D mapred.reduce.tasks=12 -mapper ~/work/order_mapper.py -input input.txt -reducer ~/work/order_reducer.py -file ~/work/order_reducer.py -file ~/work/order_mapper.py -partitioner org.apache.hadoop.mapred.lib.KeyFieldBasedPartitioner -jobconf num.key.fields.for.partition=1 -jobconf stream.num.map.output.key.fields=2 -output omr-12-kpf2-emit-o
 
    - WordCount phase: 
-       hadoop jar /usr/lib/hadoop-0.20-mapreduce/contrib/streaming/hadoop-streaming-mr1.jar -D mapred.reduce.tasks=2 -mapper ~/work/gmapper.py -input omr-12-kpf2-emit-o/* -reducer ~/work/greducer.py -file ~/work/greducer.py -file ~/work/gmapper.py -output wc1
+   
+          hadoop jar /usr/lib/hadoop-0.20-mapreduce/contrib/streaming/hadoop-streaming-mr1.jar -D mapred.reduce.tasks=2 -mapper ~/work/gmapper.py -input omr-12-kpf2-emit-o/* -reducer ~/work/greducer.py -file ~/work/greducer.py -file ~/work/gmapper.py -output wc1
 
 Example of serial test using Unix pipes:
 
