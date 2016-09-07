@@ -5,7 +5,7 @@ Derives which and how frequent web pages are visited immediately before customer
 
 The computation consists of two Map-Reduce phases:
 
-input -> order_mapper.py -> order_reducer.py -> WordCountMapper -> WordCountReducer
+         input -> order_mapper.py -> order_reducer.py -> WordCountMapper -> WordCountReducer
 
 The input is assumed to be formatted as a list of comma separated (csv) triples: <customer id, url, time stamp>, one triple per line.
 
@@ -29,6 +29,6 @@ Example hadoop commands (using Hadoop Streaming):
 
 Example of serial test using Unix pipes:
 
-   ./generator.py | ./order_mapper.py | sort | ./order_reducer.py | ./gmapper.py | sort | ./greducer.py | sort -nk2 > output-test-check.txt
+         ./generator.py | ./order_mapper.py | sort | ./order_reducer.py | ./gmapper.py | sort | ./greducer.py | sort -nk2 > output-test-check.txt
 
 
