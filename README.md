@@ -7,7 +7,9 @@ The computation consists of two Map-Reduce phases:
 
          input -> order_mapper.py -> order_reducer.py -> WordCountMapper -> WordCountReducer
 
-The input is assumed to be formatted as a list of comma separated (csv) triples: <customer id, url, time stamp>, one triple per line.
+The input is assumed to be formatted as a list of comma separated (csv) triples: 
+         
+         <customer id, url, time stamp>, one triple per line.
 
 The code order_mapper.py emits a list of 4 element tuples: <customerd id, url, time stamp, url-type>
    url-type indicated if url is an online purchase order ('o'), or a regular url ('u').
