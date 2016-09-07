@@ -16,7 +16,7 @@ The code order_mapper.py emits a list of 4 element tuples: <customerd id, url, t
    
 The Map-Reduce framework, such as Hadoop, partitions order_mapper output by customer id. Each partition sent to reducers is sorted first by customer id and then by time stamp.
 
-The reducers order_reducer.py emit list of urls of pages visited immediately preceeding purchase order.
+The reducers order_reducer.py emit lists of urls of pages visited immediately before a purchase order is issued by a customer.
 
 The produced list of urls is fed into a regular WordCount Map-Reducer, such as this nice Python example by Michael Noll: http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/#mapperpy
 
