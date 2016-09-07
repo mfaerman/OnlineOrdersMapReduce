@@ -20,8 +20,6 @@ def generate_url(cid, ts, separator):
 
 def main(separator=','):
 
-    customer_ids = range(20)
-
     random.seed(1)
 
     for ts in range(TIME_LIMIT):
