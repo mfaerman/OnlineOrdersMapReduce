@@ -24,3 +24,8 @@ Example hadoop commands (using Hadoop Streaming):
 
    - WordCount phase: 
       hadoop jar /usr/lib/hadoop-0.20-mapreduce/contrib/streaming/hadoop-streaming-mr1.jar -D mapred.reduce.tasks=2 -mapper ~/work/gmapper.py -input omr-12-kpf2-emit-o/* -reducer ~/work/greducer.py -file ~/work/greducer.py -file ~/work/gmapper.py -output wc1
+
+Example of serial test using Unix pipes:
+./generator.py | ./order_mapper.py | sort | ./order_reducer.py | ./gmapper.py | sort | ./greducer.py | sort -nk2 > output-test-check.txt
+
+
