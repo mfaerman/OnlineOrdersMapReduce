@@ -16,7 +16,7 @@ The code order_mapper.py emits a list of 4 element tuples:
          <customerd id, url, time stamp, url-type>
    *url-type* indicates if url is an online purchase order ('o'), or a regular url ('u').
    
-The Map-Reduce framework, such as Hadoop, **partitions** *order_mapper.py* output by *customer id*. Each partition sent to reducers is **sorted first by *customer id* ** and **then by *time stamp* **.
+The Map-Reduce framework, such as Hadoop, **partitions** *order_mapper.py* output by *customer id*. Each partition sent to reducers is **sorted first by** *customer id* and **then by** *time stamp*.
 
 The reducers order_reducer.py emit lists of urls of pages visited immediately before a purchase order is issued by a customer.
 
