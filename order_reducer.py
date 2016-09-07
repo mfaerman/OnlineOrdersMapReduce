@@ -29,8 +29,8 @@ def main(separator='\t'):
         for current_cid, values in group:
             ts, url, type = values.split(separator)
  #           print "%s --> %s '(%s)' t = %d" %(current_cid, url, type, int(ts))
-            if type in 'o':
-                print "%s%s1" %(predecessor_url, separator)
+            if type == 'o':
+                print predecessor_url
             predecessor_ts, predecessor_url = ts, url
 
 #         except ValueError:
