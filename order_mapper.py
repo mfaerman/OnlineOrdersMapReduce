@@ -1,7 +1,7 @@
 #!/usr/bin/env python                                                                                                                                        
 """Assumptions:
       - Input are files, each containing list of lines with the format -
-         'customer-Id, URL, Time Stamp' """
+         'customer-Id, URL, Time Stamp'  """
 
 PADDING_LENGTH = 8
 INPUT_SEPARATOR = ','
