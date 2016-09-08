@@ -19,7 +19,7 @@ def main(separator='\t'):
     #   current_cid - string containing the customer id (the key)
     #   group - iterator yielding all url entries  - [customer id, time stamp, url, url-type (order, no order)]   
     for current_cid, group in groupby(data, itemgetter(0)):
-        predecessor_ts, predecessor_url = "0", "http://No.Predecessor.Order.html"
+        predecessor_ts, predecessor_url = "0", "http://No.Predecessor.Order.html" # Orders with no predecessor visits. 
 
         for current_cid, values in group:
             ts, url, type = values.split(separator)
